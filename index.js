@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const morgan = require('morgan');
+const path = require('path');
 
 // routes
 const tourRoute = require('./routes/tours.js');
@@ -11,7 +12,6 @@ const userRoute = require('./routes/users.js');
 const authRoute = require('./routes/auth.js');
 const reviewRoute = require('./routes/reviews.js');
 const bookingRoute = require('./routes/bookings.js');
-
 
 dotenv.config();
 const app = express();
