@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
+const path = require('path');
 
 // routes
 import tourRoute from './routes/tours.js';
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(cors(corsOptions));
 app.use(cookieParser());
 app.use(morgan('dev'));
+app.use(express.static(path.join(__dirname, 'client', 'build')));
 
 // Connect to MongoDB database
 const connect = async () => {
@@ -52,6 +54,10 @@ app.use((err, req, res, next) => {
     res.status(err.status);
   }
   return res.send({ errMsg: err.message });
+});
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
 });
 
 app.listen(port, () => {
