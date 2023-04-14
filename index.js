@@ -4,7 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
-const path = require('path');
+import path from 'path'
 
 // routes
 import tourRoute from './routes/tours.js';
