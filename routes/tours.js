@@ -1,5 +1,5 @@
-import express from 'express';
-import {
+const express = require('express');
+const {
   createTour,
   deleteTour,
   getAllTours,
@@ -8,9 +8,11 @@ import {
   getTourBySearch,
   getTourCount,
   updateTour,
-} from '../controllers/tourController.js';
-import { verifyAdmin } from '../utils/verifyToken.js';
+} = require('../controllers/tourController.js');
+const { verifyAdmin } = require('../utils/verifyToken.js');
+
 const router = express.Router();
+
 
 // @route   POST api/tours
 // @des     Create a tour
@@ -52,4 +54,4 @@ router.get('/search/getFeaturedTours', getFeaturedTours);
 // @access  Public
 router.get('/search/getTourCount', getTourCount);
 
-export default router;
+module.exports = router;

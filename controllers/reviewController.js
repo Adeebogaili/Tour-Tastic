@@ -1,8 +1,8 @@
-import Tour from '../models/Tour.js';
-import Review from '../models/Review.js';
+const Tour = require('../models/Tour.js');
+const Review = require('../models/Review.js');
 
 // post a review
-export const createReview = async (req, res, next) => {
+exports.createReview = async (req, res, next) => {
   const tourId = req.params.tourId;
 
   // set the userId field to the id of the currently authenticated user
@@ -28,7 +28,7 @@ export const createReview = async (req, res, next) => {
 };
 
 // delete a review
-export const deleteReview = async (req, res, next) => {
+exports.deleteReview = async (req, res, next) => {
   const { reviewId } = req.params;
   const userId = req.user.id;
   const { tourId } = req.params;

@@ -1,6 +1,6 @@
-import express from 'express';
-import { createReview, deleteReview } from '../controllers/reviewController.js';
-import { verifyUser } from '../utils/verifyToken.js';
+const express = require('express');
+const { createReview, deleteReview } = require('../controllers/reviewController.js');
+const { verifyUser } = require('../utils/verifyToken.js');
 
 const router = express.Router();
 
@@ -14,4 +14,5 @@ router.post('/:tourId', verifyUser, createReview);
 // @access  Private
 router.delete('/:tourId/:reviewId', verifyUser, deleteReview);
 
-export default router;
+module.exports = router;
+

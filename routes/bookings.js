@@ -1,10 +1,10 @@
-import express from 'express';
-import { verifyAdmin, verifyUser } from '../utils/verifyToken.js';
-import {
+const express = require('express');
+const { verifyAdmin, verifyUser } = require('../utils/verifyToken.js');
+const {
   createBooking,
   getAllBookings,
   getBooking,
-} from '../controllers/bookingController.js';
+} = require('../controllers/bookingController.js');
 
 const router = express.Router();
 
@@ -23,4 +23,4 @@ router.get('/:bookingId', verifyUser, getBooking);
 // @access  Private
 router.get('/', verifyAdmin, getAllBookings);
 
-export default router;
+module.exports = router;

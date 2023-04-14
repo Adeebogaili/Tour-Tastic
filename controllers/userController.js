@@ -1,7 +1,6 @@
-import User from '../models/User.js';
-
+const User = require('../models/User.js');
 // create a user
-export const createUser = async (req, res, next) => {
+exports.createUser = async (req, res, next) => {
   const newUser = new User(req.body);
   try {
     const savedUser = await newUser.save();
@@ -18,7 +17,7 @@ export const createUser = async (req, res, next) => {
 };
 
 //  update user
-export const updateUser = async (req, res, next) => {
+exports.updateUser = async (req, res, next) => {
   const id = req.params.userId;
 
   try {
@@ -42,7 +41,7 @@ export const updateUser = async (req, res, next) => {
 };
 
 //  delete user
-export const deleteUser = async (req, res, next) => {
+exports.deleteUser = async (req, res, next) => {
   const id = req.params.userId;
 
   try {
@@ -59,7 +58,7 @@ export const deleteUser = async (req, res, next) => {
 };
 
 //  get user by id
-export const getOneUser = async (req, res, next) => {
+exports.getOneUser = async (req, res, next) => {
   const id = req.params.userId;
 
   try {
@@ -77,10 +76,9 @@ export const getOneUser = async (req, res, next) => {
 };
 
 //  get all users
-export const getAllUsers = async (req, res, next) => {
-
+exports.getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find()
+    const users = await User.find();
 
     res.status(200).json({
       success: true,

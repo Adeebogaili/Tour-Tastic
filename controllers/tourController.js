@@ -1,7 +1,7 @@
-import Tour from '../models/Tour.js';
+const Tour = require('../models/Tour.js');
 
 // create a tour
-export const createTour = async (req, res, next) => {
+exports.createTour = async (req, res, next) => {
   const newTour = new Tour(req.body);
   try {
     const savedTour = await newTour.save();
@@ -18,7 +18,7 @@ export const createTour = async (req, res, next) => {
 };
 
 //  update tour
-export const updateTour = async (req, res, next) => {
+exports.updateTour = async (req, res, next) => {
   const id = req.params.tourId;
 
   try {
@@ -42,7 +42,7 @@ export const updateTour = async (req, res, next) => {
 };
 
 //  delete tour
-export const deleteTour = async (req, res, next) => {
+exports.deleteTour = async (req, res, next) => {
   const id = req.params.tourId;
 
   try {
@@ -59,7 +59,7 @@ export const deleteTour = async (req, res, next) => {
 };
 
 // get tour by ID
-export const getOneTour = async (req, res, next) => {
+exports.getOneTour = async (req, res, next) => {
   const id = req.params.tourId;
 
   try {
@@ -85,7 +85,7 @@ export const getOneTour = async (req, res, next) => {
 };
 
 //  get all tours
-export const getAllTours = async (req, res, next) => {
+exports.getAllTours = async (req, res, next) => {
   // for pagination
   const page = parseInt(req.query.page);
 
@@ -114,7 +114,7 @@ export const getAllTours = async (req, res, next) => {
 };
 
 // get tour by search
-export const getTourBySearch = async (req, res, next) => {
+exports.getTourBySearch = async (req, res, next) => {
   const city = new RegExp(req.query.city, 'i');
   const distance = parseInt(req.query.distance);
   const maxGroupSize = parseInt(req.query.maxGroupSize);
@@ -146,7 +146,7 @@ export const getTourBySearch = async (req, res, next) => {
 };
 
 //  get featured tours
-export const getFeaturedTours = async (req, res, next) => {
+exports.getFeaturedTours = async (req, res, next) => {
   try {
     const tours = await Tour.find({ featured: true }).limit(8).populate({
       path: 'reviews',
@@ -165,7 +165,7 @@ export const getFeaturedTours = async (req, res, next) => {
 };
 
 // get tour counts
-export const getTourCount = async (req, res, next) => {
+exports.getTourCount = async (req, res, next) => {
   try {
     const tourCount = await Tour.estimatedDocumentCount();
 
