@@ -20,7 +20,7 @@ const verifyToken = (req, res, next) => {
   });
 };
 
-export const verifyUser = (req, res, next) => {
+exports.verifyUser = (req, res, next) => {
   verifyToken(req, res, next, () => {
     if (req.user.id === req.params.id || req.user.role === 'admin') {
       next();
@@ -31,7 +31,7 @@ export const verifyUser = (req, res, next) => {
   });
 };
 
-export const verifyAdmin = (req, res, next) => {
+exports.verifyAdmin = (req, res, next) => {
   verifyToken(req, res, next, () => {
     if (req.user.role === 'admin') {
       next();
